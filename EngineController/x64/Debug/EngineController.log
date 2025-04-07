@@ -1,0 +1,14 @@
+﻿  Source.c
+C:\Users\mihai\Desktop\EngineController\includes\pthreads-win32\prebuilt-dll-2-9-1-release\include\pthread.h(320,8): error C2011: 'timespec' : redéfinition du type 'struct'
+  (compiler le fichier source 'Source.c')
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\ucrt\time.h(45,12):
+  voir la déclaration de 'timespec'
+  
+C:\Users\mihai\Desktop\EngineController\EngineController\Source.c(13,12): error C2065: 'thrd_t' : identificateur non déclaré
+C:\Users\mihai\Desktop\EngineController\EngineController\Source.c(13,12): error C2146: erreur de syntaxe : absence de ';' avant l'identificateur 'JoyInput'
+C:\Users\mihai\Desktop\EngineController\EngineController\Source.c(13,20): error C2065: 'JoyInput' : identificateur non déclaré
+C:\Users\mihai\Desktop\EngineController\EngineController\Source.c(14,9): warning C4013: 'thrd_create' non défini(e) ; extern retournant int pris par défaut
+C:\Users\mihai\Desktop\EngineController\EngineController\Source.c(14,30): error C2065: 'JoyInput' : identificateur non déclaré
+C:\Users\mihai\Desktop\EngineController\EngineController\Source.c(14,70): error C2065: 'thrd_success' : identificateur non déclaré
+C:\Users\mihai\Desktop\EngineController\EngineController\Source.c(20,5): warning C4013: 'thrd_join' non défini(e) ; extern retournant int pris par défaut
+C:\Users\mihai\Desktop\EngineController\EngineController\Source.c(20,23): error C2065: 'JoyInput' : identificateur non déclaré

@@ -1,0 +1,7 @@
+773c9cfb2a45fd4d05f1e41e6b84176d  GNUmakefile
+ffb479cc60080c99fb5a020294d5100c  Makefile
+db1567c526001aa0573899d5036a1d21  QueueUserAPCEx.c
+8383e80d9ff4efe78cc66f4cfb96542d  QueueUserAPCEx.h
+96cabf26690fc6b3a9a340585e98a88a  quserex.dll
+3afc81b3c8ae955d95a0968bd5352618  quserex.lib
+6c2ae22b0dc466f6fb970e130483074c  sha512.sum
