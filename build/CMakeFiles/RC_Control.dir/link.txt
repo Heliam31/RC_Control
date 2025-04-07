@@ -1,0 +1,1 @@
+/usr/bin/gcc -g CMakeFiles/RC_Control.dir/src/main.c.o CMakeFiles/RC_Control.dir/src/throttleinput.c.o -o Debug/RC_Control

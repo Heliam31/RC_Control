@@ -1,27 +1,26 @@
 #include <stdio.h>
 #include <pthread.h>
-#include <SDL3/SDL.h>
-#include <SDL3/SDL_main.h>
+#include <unistd.h>
+#include "throttleinput.h"
 
-void* thread_function(void* arg);
+
 
 int main() {
-    pthread_t thread_id;
+    pthread_t thread;
+    pthread_create(&thread, NULL, hotas_inputs, NULL);
+    int current = throttle_position;
+    while (running) {
+        pthread_mutex_lock(&throttle_mutex);
+        if(throttle_position != current){
+            current = throttle_position;
+            printf("Throttle: %d%%\n", current);
+        }
+        
+        pthread_mutex_unlock(&throttle_mutex);
 
-    // Create a new thread that will run the thread_function
-    if (pthread_create(&thread_id, NULL, thread_function, NULL) != 0) {
-        perror("Thread creation failed");
-        return 1;
+        
+        usleep(1000); // 100ms = 100000
     }
 
-
-
-    // Wait for the thread to finish
-    if (pthread_join(thread_id, NULL) != 0) {
-        perror("Thread join failed");
-        return 1;
-    }
-
-    printf("Main thread finished\n");
     return 0;
 }

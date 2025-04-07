@@ -117,63 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named hello
+# Target rules for targets named RC_Control
 
 # Build rule for target.
-hello: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hello
-.PHONY : hello
+RC_Control: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RC_Control
+.PHONY : RC_Control
 
 # fast build rule for target.
-hello/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/build
-.PHONY : hello/fast
-
-#=============================================================================
-# Target rules for targets named SDL3-shared
-
-# Build rule for target.
-SDL3-shared: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDL3-shared
-.PHONY : SDL3-shared
-
-# fast build rule for target.
-SDL3-shared/fast:
-	$(MAKE) $(MAKESILENT) -f includes/SDL/CMakeFiles/SDL3-shared.dir/build.make includes/SDL/CMakeFiles/SDL3-shared.dir/build
-.PHONY : SDL3-shared/fast
-
-#=============================================================================
-# Target rules for targets named SDL3_test
-
-# Build rule for target.
-SDL3_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDL3_test
-.PHONY : SDL3_test
-
-# fast build rule for target.
-SDL3_test/fast:
-	$(MAKE) $(MAKESILENT) -f includes/SDL/CMakeFiles/SDL3_test.dir/build.make includes/SDL/CMakeFiles/SDL3_test.dir/build
-.PHONY : SDL3_test/fast
-
-#=============================================================================
-# Target rules for targets named SDL_uclibc
-
-# Build rule for target.
-SDL_uclibc: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SDL_uclibc
-.PHONY : SDL_uclibc
-
-# fast build rule for target.
-SDL_uclibc/fast:
-	$(MAKE) $(MAKESILENT) -f includes/SDL/CMakeFiles/SDL_uclibc.dir/build.make includes/SDL/CMakeFiles/SDL_uclibc.dir/build
-.PHONY : SDL_uclibc/fast
+RC_Control/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/build
+.PHONY : RC_Control/fast
 
 src/main.o: src/main.c.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/main.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/main.c.o
 .PHONY : src/main.c.o
 
 src/main.i: src/main.c.i
@@ -181,7 +142,7 @@ src/main.i: src/main.c.i
 
 # target to preprocess a source file
 src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/main.c.i
 .PHONY : src/main.c.i
 
 src/main.s: src/main.c.s
@@ -189,32 +150,32 @@ src/main.s: src/main.c.s
 
 # target to generate assembly for a file
 src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/main.c.s
 .PHONY : src/main.c.s
 
-src/threadaj.o: src/threadaj.c.o
-.PHONY : src/threadaj.o
+src/throttleinput.o: src/throttleinput.c.o
+.PHONY : src/throttleinput.o
 
 # target to build an object file
-src/threadaj.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/threadaj.c.o
-.PHONY : src/threadaj.c.o
+src/throttleinput.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/throttleinput.c.o
+.PHONY : src/throttleinput.c.o
 
-src/threadaj.i: src/threadaj.c.i
-.PHONY : src/threadaj.i
+src/throttleinput.i: src/throttleinput.c.i
+.PHONY : src/throttleinput.i
 
 # target to preprocess a source file
-src/threadaj.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/threadaj.c.i
-.PHONY : src/threadaj.c.i
+src/throttleinput.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/throttleinput.c.i
+.PHONY : src/throttleinput.c.i
 
-src/threadaj.s: src/threadaj.c.s
-.PHONY : src/threadaj.s
+src/throttleinput.s: src/throttleinput.c.s
+.PHONY : src/throttleinput.s
 
 # target to generate assembly for a file
-src/threadaj.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/src/threadaj.c.s
-.PHONY : src/threadaj.c.s
+src/throttleinput.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/throttleinput.c.s
+.PHONY : src/throttleinput.c.s
 
 # Help Target
 help:
@@ -224,16 +185,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... SDL3-shared"
-	@echo "... SDL3_test"
-	@echo "... SDL_uclibc"
-	@echo "... hello"
+	@echo "... RC_Control"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/threadaj.o"
-	@echo "... src/threadaj.i"
-	@echo "... src/threadaj.s"
+	@echo "... src/throttleinput.o"
+	@echo "... src/throttleinput.i"
+	@echo "... src/throttleinput.s"
 .PHONY : help
 
 

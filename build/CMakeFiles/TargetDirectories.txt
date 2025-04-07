@@ -1,8 +1,3 @@
-/home/heliam/Bureau/RC_Control/build/CMakeFiles/hello.dir
+/home/heliam/Bureau/RC_Control/build/CMakeFiles/RC_Control.dir
 /home/heliam/Bureau/RC_Control/build/CMakeFiles/edit_cache.dir
 /home/heliam/Bureau/RC_Control/build/CMakeFiles/rebuild_cache.dir
-/home/heliam/Bureau/RC_Control/build/includes/SDL/CMakeFiles/SDL3-shared.dir
-/home/heliam/Bureau/RC_Control/build/includes/SDL/CMakeFiles/SDL3_test.dir
-/home/heliam/Bureau/RC_Control/build/includes/SDL/CMakeFiles/SDL_uclibc.dir
-/home/heliam/Bureau/RC_Control/build/includes/SDL/CMakeFiles/edit_cache.dir
-/home/heliam/Bureau/RC_Control/build/includes/SDL/CMakeFiles/rebuild_cache.dir
