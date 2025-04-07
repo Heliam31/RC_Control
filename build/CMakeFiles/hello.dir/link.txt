@@ -1,0 +1,1 @@
+/usr/bin/gcc -g CMakeFiles/hello.dir/src/main.c.o CMakeFiles/hello.dir/src/threadaj.c.o -o Debug/hello  -Wl,-rpath,/home/heliam/Bureau/RC_Control/build/Debug Debug/libSDL3.so.0.3.0
