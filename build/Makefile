@@ -129,30 +129,6 @@ RC_Control/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/build
 .PHONY : RC_Control/fast
 
-src/BLEClient.o: src/BLEClient.c.o
-.PHONY : src/BLEClient.o
-
-# target to build an object file
-src/BLEClient.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/BLEClient.c.o
-.PHONY : src/BLEClient.c.o
-
-src/BLEClient.i: src/BLEClient.c.i
-.PHONY : src/BLEClient.i
-
-# target to preprocess a source file
-src/BLEClient.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/BLEClient.c.i
-.PHONY : src/BLEClient.c.i
-
-src/BLEClient.s: src/BLEClient.c.s
-.PHONY : src/BLEClient.s
-
-# target to generate assembly for a file
-src/BLEClient.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/BLEClient.c.s
-.PHONY : src/BLEClient.c.s
-
 src/mainBLE.o: src/mainBLE.c.o
 .PHONY : src/mainBLE.o
 
@@ -186,9 +162,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... RC_Control"
-	@echo "... src/BLEClient.o"
-	@echo "... src/BLEClient.i"
-	@echo "... src/BLEClient.s"
 	@echo "... src/mainBLE.o"
 	@echo "... src/mainBLE.i"
 	@echo "... src/mainBLE.s"

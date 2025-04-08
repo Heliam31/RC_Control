@@ -1,6 +1,0 @@
-includes/SDL/CMakeFiles/SDL3-shared.dir/src/storage/SDL_storage.c.o: \
- /home/heliam/Bureau/RC_Control/includes/SDL/src/storage/SDL_storage.c \
- /usr/include/stdc-predef.h \
- /home/heliam/Bureau/RC_Control/includes/SDL/src/SDL_internal.h \
- /home/heliam/Bureau/RC_Control/includes/SDL/src/storage/SDL_sysstorage.h \
- /home/heliam/Bureau/RC_Control/includes/SDL/src/storage/../filesystem/SDL_sysfilesystem.h

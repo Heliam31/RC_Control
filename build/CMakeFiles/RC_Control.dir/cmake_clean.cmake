@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/RC_Control.dir/src/BLEClient.c.o"
-  "CMakeFiles/RC_Control.dir/src/BLEClient.c.o.d"
   "CMakeFiles/RC_Control.dir/src/mainBLE.c.o"
   "CMakeFiles/RC_Control.dir/src/mainBLE.c.o.d"
   "Debug/RC_Control"
