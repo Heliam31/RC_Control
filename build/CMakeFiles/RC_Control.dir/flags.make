@@ -4,7 +4,7 @@
 # compile C with /usr/bin/gcc
 C_DEFINES = 
 
-C_INCLUDES = 
+C_INCLUDES = -I/home/heliam/Bureau/RC_Control/includes
 
 C_FLAGS = -g
 

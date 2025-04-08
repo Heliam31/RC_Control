@@ -1,14 +1,14 @@
 [
 {
   "directory": "/home/heliam/Bureau/RC_Control/build",
-  "command": "/usr/bin/gcc   -g -o CMakeFiles/RC_Control.dir/src/main.c.o -c /home/heliam/Bureau/RC_Control/src/main.c",
-  "file": "/home/heliam/Bureau/RC_Control/src/main.c",
-  "output": "CMakeFiles/RC_Control.dir/src/main.c.o"
+  "command": "/usr/bin/gcc  -I/home/heliam/Bureau/RC_Control/includes -g -o CMakeFiles/RC_Control.dir/src/mainBLE.c.o -c /home/heliam/Bureau/RC_Control/src/mainBLE.c",
+  "file": "/home/heliam/Bureau/RC_Control/src/mainBLE.c",
+  "output": "CMakeFiles/RC_Control.dir/src/mainBLE.c.o"
 },
 {
   "directory": "/home/heliam/Bureau/RC_Control/build",
-  "command": "/usr/bin/gcc   -g -o CMakeFiles/RC_Control.dir/src/throttleinput.c.o -c /home/heliam/Bureau/RC_Control/src/throttleinput.c",
-  "file": "/home/heliam/Bureau/RC_Control/src/throttleinput.c",
-  "output": "CMakeFiles/RC_Control.dir/src/throttleinput.c.o"
+  "command": "/usr/bin/gcc  -I/home/heliam/Bureau/RC_Control/includes -g -o CMakeFiles/RC_Control.dir/src/BLEClient.c.o -c /home/heliam/Bureau/RC_Control/src/BLEClient.c",
+  "file": "/home/heliam/Bureau/RC_Control/src/BLEClient.c",
+  "output": "CMakeFiles/RC_Control.dir/src/BLEClient.c.o"
 }
 ]

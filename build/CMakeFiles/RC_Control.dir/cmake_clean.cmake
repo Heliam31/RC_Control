@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/RC_Control.dir/src/main.c.o"
-  "CMakeFiles/RC_Control.dir/src/main.c.o.d"
-  "CMakeFiles/RC_Control.dir/src/throttleinput.c.o"
-  "CMakeFiles/RC_Control.dir/src/throttleinput.c.o.d"
+  "CMakeFiles/RC_Control.dir/src/BLEClient.c.o"
+  "CMakeFiles/RC_Control.dir/src/BLEClient.c.o.d"
+  "CMakeFiles/RC_Control.dir/src/mainBLE.c.o"
+  "CMakeFiles/RC_Control.dir/src/mainBLE.c.o.d"
   "Debug/RC_Control"
   "Debug/RC_Control.pdb"
 )

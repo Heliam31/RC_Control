@@ -129,53 +129,53 @@ RC_Control/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/build
 .PHONY : RC_Control/fast
 
-src/main.o: src/main.c.o
-.PHONY : src/main.o
+src/BLEClient.o: src/BLEClient.c.o
+.PHONY : src/BLEClient.o
 
 # target to build an object file
-src/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/main.c.o
-.PHONY : src/main.c.o
+src/BLEClient.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/BLEClient.c.o
+.PHONY : src/BLEClient.c.o
 
-src/main.i: src/main.c.i
-.PHONY : src/main.i
+src/BLEClient.i: src/BLEClient.c.i
+.PHONY : src/BLEClient.i
 
 # target to preprocess a source file
-src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/main.c.i
-.PHONY : src/main.c.i
+src/BLEClient.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/BLEClient.c.i
+.PHONY : src/BLEClient.c.i
 
-src/main.s: src/main.c.s
-.PHONY : src/main.s
+src/BLEClient.s: src/BLEClient.c.s
+.PHONY : src/BLEClient.s
 
 # target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/main.c.s
-.PHONY : src/main.c.s
+src/BLEClient.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/BLEClient.c.s
+.PHONY : src/BLEClient.c.s
 
-src/throttleinput.o: src/throttleinput.c.o
-.PHONY : src/throttleinput.o
+src/mainBLE.o: src/mainBLE.c.o
+.PHONY : src/mainBLE.o
 
 # target to build an object file
-src/throttleinput.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/throttleinput.c.o
-.PHONY : src/throttleinput.c.o
+src/mainBLE.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/mainBLE.c.o
+.PHONY : src/mainBLE.c.o
 
-src/throttleinput.i: src/throttleinput.c.i
-.PHONY : src/throttleinput.i
+src/mainBLE.i: src/mainBLE.c.i
+.PHONY : src/mainBLE.i
 
 # target to preprocess a source file
-src/throttleinput.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/throttleinput.c.i
-.PHONY : src/throttleinput.c.i
+src/mainBLE.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/mainBLE.c.i
+.PHONY : src/mainBLE.c.i
 
-src/throttleinput.s: src/throttleinput.c.s
-.PHONY : src/throttleinput.s
+src/mainBLE.s: src/mainBLE.c.s
+.PHONY : src/mainBLE.s
 
 # target to generate assembly for a file
-src/throttleinput.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/throttleinput.c.s
-.PHONY : src/throttleinput.c.s
+src/mainBLE.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/mainBLE.c.s
+.PHONY : src/mainBLE.c.s
 
 # Help Target
 help:
@@ -186,12 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... RC_Control"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/throttleinput.o"
-	@echo "... src/throttleinput.i"
-	@echo "... src/throttleinput.s"
+	@echo "... src/BLEClient.o"
+	@echo "... src/BLEClient.i"
+	@echo "... src/BLEClient.s"
+	@echo "... src/mainBLE.o"
+	@echo "... src/mainBLE.i"
+	@echo "... src/mainBLE.s"
 .PHONY : help
 
 

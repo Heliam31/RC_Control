@@ -69,44 +69,44 @@ include CMakeFiles/RC_Control.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/RC_Control.dir/flags.make
 
-CMakeFiles/RC_Control.dir/src/main.c.o: CMakeFiles/RC_Control.dir/flags.make
-CMakeFiles/RC_Control.dir/src/main.c.o: /home/heliam/Bureau/RC_Control/src/main.c
-CMakeFiles/RC_Control.dir/src/main.c.o: CMakeFiles/RC_Control.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/heliam/Bureau/RC_Control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/RC_Control.dir/src/main.c.o"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/RC_Control.dir/src/main.c.o -MF CMakeFiles/RC_Control.dir/src/main.c.o.d -o CMakeFiles/RC_Control.dir/src/main.c.o -c /home/heliam/Bureau/RC_Control/src/main.c
+CMakeFiles/RC_Control.dir/src/mainBLE.c.o: CMakeFiles/RC_Control.dir/flags.make
+CMakeFiles/RC_Control.dir/src/mainBLE.c.o: /home/heliam/Bureau/RC_Control/src/mainBLE.c
+CMakeFiles/RC_Control.dir/src/mainBLE.c.o: CMakeFiles/RC_Control.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/heliam/Bureau/RC_Control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/RC_Control.dir/src/mainBLE.c.o"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/RC_Control.dir/src/mainBLE.c.o -MF CMakeFiles/RC_Control.dir/src/mainBLE.c.o.d -o CMakeFiles/RC_Control.dir/src/mainBLE.c.o -c /home/heliam/Bureau/RC_Control/src/mainBLE.c
 
-CMakeFiles/RC_Control.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/RC_Control.dir/src/main.c.i"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/heliam/Bureau/RC_Control/src/main.c > CMakeFiles/RC_Control.dir/src/main.c.i
+CMakeFiles/RC_Control.dir/src/mainBLE.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/RC_Control.dir/src/mainBLE.c.i"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/heliam/Bureau/RC_Control/src/mainBLE.c > CMakeFiles/RC_Control.dir/src/mainBLE.c.i
 
-CMakeFiles/RC_Control.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/RC_Control.dir/src/main.c.s"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/heliam/Bureau/RC_Control/src/main.c -o CMakeFiles/RC_Control.dir/src/main.c.s
+CMakeFiles/RC_Control.dir/src/mainBLE.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/RC_Control.dir/src/mainBLE.c.s"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/heliam/Bureau/RC_Control/src/mainBLE.c -o CMakeFiles/RC_Control.dir/src/mainBLE.c.s
 
-CMakeFiles/RC_Control.dir/src/throttleinput.c.o: CMakeFiles/RC_Control.dir/flags.make
-CMakeFiles/RC_Control.dir/src/throttleinput.c.o: /home/heliam/Bureau/RC_Control/src/throttleinput.c
-CMakeFiles/RC_Control.dir/src/throttleinput.c.o: CMakeFiles/RC_Control.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/heliam/Bureau/RC_Control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/RC_Control.dir/src/throttleinput.c.o"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/RC_Control.dir/src/throttleinput.c.o -MF CMakeFiles/RC_Control.dir/src/throttleinput.c.o.d -o CMakeFiles/RC_Control.dir/src/throttleinput.c.o -c /home/heliam/Bureau/RC_Control/src/throttleinput.c
+CMakeFiles/RC_Control.dir/src/BLEClient.c.o: CMakeFiles/RC_Control.dir/flags.make
+CMakeFiles/RC_Control.dir/src/BLEClient.c.o: /home/heliam/Bureau/RC_Control/src/BLEClient.c
+CMakeFiles/RC_Control.dir/src/BLEClient.c.o: CMakeFiles/RC_Control.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/heliam/Bureau/RC_Control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/RC_Control.dir/src/BLEClient.c.o"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/RC_Control.dir/src/BLEClient.c.o -MF CMakeFiles/RC_Control.dir/src/BLEClient.c.o.d -o CMakeFiles/RC_Control.dir/src/BLEClient.c.o -c /home/heliam/Bureau/RC_Control/src/BLEClient.c
 
-CMakeFiles/RC_Control.dir/src/throttleinput.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/RC_Control.dir/src/throttleinput.c.i"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/heliam/Bureau/RC_Control/src/throttleinput.c > CMakeFiles/RC_Control.dir/src/throttleinput.c.i
+CMakeFiles/RC_Control.dir/src/BLEClient.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/RC_Control.dir/src/BLEClient.c.i"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/heliam/Bureau/RC_Control/src/BLEClient.c > CMakeFiles/RC_Control.dir/src/BLEClient.c.i
 
-CMakeFiles/RC_Control.dir/src/throttleinput.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/RC_Control.dir/src/throttleinput.c.s"
-	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/heliam/Bureau/RC_Control/src/throttleinput.c -o CMakeFiles/RC_Control.dir/src/throttleinput.c.s
+CMakeFiles/RC_Control.dir/src/BLEClient.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/RC_Control.dir/src/BLEClient.c.s"
+	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/heliam/Bureau/RC_Control/src/BLEClient.c -o CMakeFiles/RC_Control.dir/src/BLEClient.c.s
 
 # Object files for target RC_Control
 RC_Control_OBJECTS = \
-"CMakeFiles/RC_Control.dir/src/main.c.o" \
-"CMakeFiles/RC_Control.dir/src/throttleinput.c.o"
+"CMakeFiles/RC_Control.dir/src/mainBLE.c.o" \
+"CMakeFiles/RC_Control.dir/src/BLEClient.c.o"
 
 # External object files for target RC_Control
 RC_Control_EXTERNAL_OBJECTS =
 
-Debug/RC_Control: CMakeFiles/RC_Control.dir/src/main.c.o
-Debug/RC_Control: CMakeFiles/RC_Control.dir/src/throttleinput.c.o
+Debug/RC_Control: CMakeFiles/RC_Control.dir/src/mainBLE.c.o
+Debug/RC_Control: CMakeFiles/RC_Control.dir/src/BLEClient.c.o
 Debug/RC_Control: CMakeFiles/RC_Control.dir/build.make
 Debug/RC_Control: CMakeFiles/RC_Control.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/heliam/Bureau/RC_Control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable Debug/RC_Control"
