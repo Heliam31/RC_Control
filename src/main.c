@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include "throttleinput.h"
 
+// ESP32 mac addr = 1c:69:20:a4:c6:1c
 
 
 int main() {
@@ -24,3 +25,4 @@ int main() {
 
     return 0;
 }
+

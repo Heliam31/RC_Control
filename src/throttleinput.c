@@ -48,7 +48,9 @@ void* hotas_inputs(void* arg) {
                 printf("Bye Bye");
                 running = 0;
             }
-            printf("Button %u = %s\n", e.number, e.value ? "pressed" : "released");
+            else{
+                printf("Button %u = %s\n", e.number, e.value ? "pressed" : "released");
+            }
         }
     }
 
