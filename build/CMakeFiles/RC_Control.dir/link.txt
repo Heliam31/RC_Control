@@ -1,1 +1,1 @@
-/usr/bin/gcc -g -L/lib64 CMakeFiles/RC_Control.dir/src/mainBLE.c.o -o Debug/RC_Control  -lbluetooth
+/usr/bin/gcc -g -L/lib64 CMakeFiles/RC_Control.dir/src/ble.c.o CMakeFiles/RC_Control.dir/src/bleClient.c.o -o Debug/RC_Control  -ldbus-1 -lglib-2.0 -lbluetooth -ldbus-1 -lglib-2.0 -lbluetooth

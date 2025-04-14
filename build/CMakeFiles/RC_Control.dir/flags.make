@@ -4,7 +4,7 @@
 # compile C with /usr/bin/gcc
 C_DEFINES = 
 
-C_INCLUDES = -I/home/heliam/Bureau/RC_Control/includes
+C_INCLUDES = -I/home/heliam/Bureau/RC_Control/bluez-5.49 -I/home/heliam/Bureau/RC_Control/bluez-5.49/gdbus -I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/home/heliam/Bureau/RC_Control/includes
 
-C_FLAGS = -g
+C_FLAGS = -g -g
 

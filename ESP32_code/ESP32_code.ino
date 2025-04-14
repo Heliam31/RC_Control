@@ -4,7 +4,7 @@
 
 BLECharacteristic* pCharacteristic;
 #define SERVICE_UUID        "12345678-1234-1234-1234-1234567890ab"
-#define CHARACTERISTIC_UUID "abcd1234-5678-1234-5678-abcdefabcdef"
+#define CHARACTERISTIC_UUID "0000fff1-0000-1000-8000-00805f9b34fb" 
 
 void setup() {
   Serial.begin(115200);

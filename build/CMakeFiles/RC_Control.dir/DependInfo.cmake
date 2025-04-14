@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/heliam/Bureau/RC_Control/src/mainBLE.c" "CMakeFiles/RC_Control.dir/src/mainBLE.c.o" "gcc" "CMakeFiles/RC_Control.dir/src/mainBLE.c.o.d"
+  "/home/heliam/Bureau/RC_Control/src/ble.c" "CMakeFiles/RC_Control.dir/src/ble.c.o" "gcc" "CMakeFiles/RC_Control.dir/src/ble.c.o.d"
+  "/home/heliam/Bureau/RC_Control/src/bleClient.c" "CMakeFiles/RC_Control.dir/src/bleClient.c.o" "gcc" "CMakeFiles/RC_Control.dir/src/bleClient.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

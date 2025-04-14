@@ -129,29 +129,53 @@ RC_Control/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/build
 .PHONY : RC_Control/fast
 
-src/mainBLE.o: src/mainBLE.c.o
-.PHONY : src/mainBLE.o
+src/ble.o: src/ble.c.o
+.PHONY : src/ble.o
 
 # target to build an object file
-src/mainBLE.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/mainBLE.c.o
-.PHONY : src/mainBLE.c.o
+src/ble.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/ble.c.o
+.PHONY : src/ble.c.o
 
-src/mainBLE.i: src/mainBLE.c.i
-.PHONY : src/mainBLE.i
+src/ble.i: src/ble.c.i
+.PHONY : src/ble.i
 
 # target to preprocess a source file
-src/mainBLE.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/mainBLE.c.i
-.PHONY : src/mainBLE.c.i
+src/ble.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/ble.c.i
+.PHONY : src/ble.c.i
 
-src/mainBLE.s: src/mainBLE.c.s
-.PHONY : src/mainBLE.s
+src/ble.s: src/ble.c.s
+.PHONY : src/ble.s
 
 # target to generate assembly for a file
-src/mainBLE.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/mainBLE.c.s
-.PHONY : src/mainBLE.c.s
+src/ble.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/ble.c.s
+.PHONY : src/ble.c.s
+
+src/bleClient.o: src/bleClient.c.o
+.PHONY : src/bleClient.o
+
+# target to build an object file
+src/bleClient.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/bleClient.c.o
+.PHONY : src/bleClient.c.o
+
+src/bleClient.i: src/bleClient.c.i
+.PHONY : src/bleClient.i
+
+# target to preprocess a source file
+src/bleClient.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/bleClient.c.i
+.PHONY : src/bleClient.c.i
+
+src/bleClient.s: src/bleClient.c.s
+.PHONY : src/bleClient.s
+
+# target to generate assembly for a file
+src/bleClient.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/RC_Control.dir/build.make CMakeFiles/RC_Control.dir/src/bleClient.c.s
+.PHONY : src/bleClient.c.s
 
 # Help Target
 help:
@@ -162,9 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... RC_Control"
-	@echo "... src/mainBLE.o"
-	@echo "... src/mainBLE.i"
-	@echo "... src/mainBLE.s"
+	@echo "... src/ble.o"
+	@echo "... src/ble.i"
+	@echo "... src/ble.s"
+	@echo "... src/bleClient.o"
+	@echo "... src/bleClient.i"
+	@echo "... src/bleClient.s"
 .PHONY : help
 
 
