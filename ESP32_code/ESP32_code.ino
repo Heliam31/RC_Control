@@ -14,9 +14,9 @@ void setup() {
   BLEService *pService = pServer->createService(SERVICE_UUID);
 
   BLECharacteristic *pCharacteristic =
-    pService->createCharacteristic(CHARACTERISTIC_UUID, BLECharacteristic::PROPERTY_READ | BLECharacteristic::PROPERTY_WRITE);
+    pService->createCharacteristic(CHARACTERISTIC_UUID, BLECharacteristic::PROPERTY_READ);
 
-  pCharacteristic->setValue("Hello World says Neil");
+  pCharacteristic->setValue("4");
   pService->start();
 
   BLEAdvertising *pAdvertising = BLEDevice::getAdvertising();

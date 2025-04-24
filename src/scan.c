@@ -124,6 +124,40 @@ void* ble_sender(void* arg) {
         if (strcmp(SERVICE_UUID, service.uuid.value) == 0) {
             service_nb = i;
             printf("TROUVE le bon service \n");
+
+
+            for (size_t j = 0; j < service.characteristic_count; j++) {
+
+                if (strcmp(CHARACTERISTIC_UUID, service.characteristics[j].uuid.value) == 0) {
+                    charac_nb = j;
+
+                    uint8_t** data = NULL;
+                    size_t* data_length = 0;
+        
+                    simpleble_err_t err = simpleble_peripheral_read(peripheral, service.uuid, service.characteristics[charac_nb].uuid, data, data_length);
+                   
+                    if (err != SIMPLEBLE_SUCCESS) {
+                        printf("Erreur de lecture: %d\n", err);
+                        return NULL;
+                    }
+        
+                    // Affichage
+                    printf("Valeur lue (%zu octets) : ", *data_length);
+                    for (size_t i = 0; i < *data_length; i++) {
+                        printf("%02X ", *data[i]);
+                    }
+                    printf("\n");
+        
+                    simpleble_free(data);
+                }
+    
+                printf("  Characteristic: %s - (%zu descriptors)\n", service.characteristics[j].uuid.value,
+                       service.characteristics[j].descriptor_count);
+                for (size_t k = 0; k < service.characteristics[j].descriptor_count; k++) {
+                    printf("    Descriptor: %s\n", service.characteristics[j].descriptors[k].uuid.value);
+                }
+            }
+
         }
 
         printf("Service: %s - (%zu characteristics)\n", service.uuid.value, service.characteristic_count);
@@ -148,7 +182,7 @@ void* ble_sender(void* arg) {
         if(throttle_position != current){
             printf("[THREAD_BLE] : Valeur throttle changée à %d%%! ", throttle_position);
             current = throttle_position; 
-
+    /*
             printf("lecture de la charac %d dans le service %d", charac_nb, service_nb);
             simpleble_service_t service;
             err_code = simpleble_peripheral_services_get(peripheral, service_nb, &service);
@@ -171,6 +205,7 @@ void* ble_sender(void* arg) {
             printf("\n");
 
             simpleble_free(data);
+    */
         }
 
     }
