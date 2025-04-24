@@ -1,3 +1,0 @@
-/home/heliam/Bureau/RC_Control/build/CMakeFiles/RC_Control.dir
-/home/heliam/Bureau/RC_Control/build/CMakeFiles/edit_cache.dir
-/home/heliam/Bureau/RC_Control/build/CMakeFiles/rebuild_cache.dir

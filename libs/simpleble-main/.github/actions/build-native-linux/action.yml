@@ -1,0 +1,93 @@
+# .github/actions/build-native-linux/action.yml
+
+name: 'Build Native Linux Target'
+description: 'Builds and installs a CMake target on Linux using standard commands. Assumes environment (like cross-compiler) is set up by the caller (e.g., via dockcross container).'
+
+inputs:
+  source-dir:
+    description: 'Path to the source directory containing CMakeLists.txt'
+    required: true
+  build-dir:
+    description: 'Path for the CMake build directory (e.g., build_linux_x64)'
+    required: true
+  install-prefix:
+    description: 'Directory where the target will be installed via "cmake --install"'
+    required: true
+  library-type:
+    description: 'Type of library to build (static or shared)'
+    required: true
+    default: 'static'
+  build-config:
+    description: 'CMake build configuration (e.g., Release, Debug)'
+    required: false
+    default: 'Release'
+  cmake-options:
+    description: 'Additional options to pass to the initial CMake configuration command (e.g., -DSOME_FLAG=ON)'
+    required: false
+    default: ''
+  target-name:
+    description: 'Logical name of the target being built (used for logging)'
+    required: false
+    default: 'target' # Generic default
+
+outputs:
+  install-path:
+    description: 'The directory where the target was installed (mirrors install-prefix input)'
+    value: ${{ inputs.install-prefix }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Prepare Environment Variables
+      id: env_prep
+      shell: bash
+      run: |
+        echo "BUILD_TARGET_NAME=${{ inputs.target-name }}" >> $GITHUB_ENV
+        if [[ "${{ inputs.library-type }}" == "shared" ]]; then
+          echo "BUILD_SHARED_LIBS_FLAG=ON" >> $GITHUB_ENV
+        elif [[ "${{ inputs.library-type }}" == "static" ]]; then
+          echo "BUILD_SHARED_LIBS_FLAG=OFF" >> $GITHUB_ENV
+        else
+          echo "::error::Invalid library-type specified: ${{ inputs.library-type }}. Must be 'static' or 'shared'."
+          exit 1
+        fi
+        echo "BUILD_CONFIG_TYPE=${{ inputs.build-config }}" >> $GITHUB_ENV
+
+    - name: Print Build Configuration
+      shell: bash
+      run: |
+        echo "Starting build for ${{ env.BUILD_TARGET_NAME }}"
+        echo "  Source Directory: ${{ inputs.source-dir }}"
+        echo "  Build Directory:  ${{ inputs.build-dir }}"
+        echo "  Install Prefix:   ${{ inputs.install-prefix }}"
+        echo "  Library Type:     ${{ inputs.library-type }} (BUILD_SHARED_LIBS=${{ env.BUILD_SHARED_LIBS_FLAG }})"
+        echo "  Build Config:     ${{ env.BUILD_CONFIG_TYPE }}"
+        echo "  CMake Options:    ${{ inputs.cmake-options }}"
+
+    - name: Configure CMake
+      shell: bash
+      # NOTE: Assumes the environment (compiler, CMAKE_FIND_ROOT_PATH etc.) is correctly set up by the calling workflow/container
+      run: |
+        cmake -B "${{ inputs.build-dir }}" \
+              -S "${{ inputs.source-dir }}" \
+              -DCMAKE_BUILD_TYPE=${{ env.BUILD_CONFIG_TYPE }} \
+              -DBUILD_SHARED_LIBS=${{ env.BUILD_SHARED_LIBS_FLAG }} \
+              ${{ inputs.cmake-options }} # Pass through extra options
+
+    - name: Build Target
+      shell: bash
+      run: |
+        # Using --parallel without a number usually defaults to the number of available cores
+        cmake --build "${{ inputs.build-dir }}" --config ${{ env.BUILD_CONFIG_TYPE }} --parallel
+
+    - name: Install Target
+      shell: bash
+      run: |
+        # Ensure the target directory exists for installation
+        mkdir -p "${{ inputs.install-prefix }}"
+        cmake --install "${{ inputs.build-dir }}" --prefix "${{ inputs.install-prefix }}"
+
+    - name: Final Install Path
+      shell: bash
+      run: |
+        echo "Installation completed successfully to: ${{ inputs.install-prefix }}"

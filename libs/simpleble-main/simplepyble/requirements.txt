@@ -1,0 +1,10 @@
+twine
+build
+auditwheel
+wheel
+ninja; platform_system!='Windows'
+pytest
+pybind11
+scikit-build>=0.18.1
+cmake>=3.21
+setuptools>=70.1

@@ -1,0 +1,85 @@
+name: CI Build SimpleRsBLE
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.config.runner-os || 'ubuntu-latest' }}
+    container: ${{ matrix.config.container-image }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { runner-os: ubuntu-22.04, os: linux, architecture: x64, container-image: dockcross/linux-x64 }
+          # - { runner-os: ubuntu-22.04, os: linux, architecture: x86, container-image: dockcross/linux-x86 }
+          # - { runner-os: ubuntu-22.04, os: linux, architecture: aarch64, container-image: dockcross/linux-arm64 }
+          # - { runner-os: ubuntu-22.04, os: linux, architecture: armv6, container-image: dockcross/linux-armv6-lts }
+          # - { runner-os: macos-14, os: macos, architecture: x64 } # Containers are not required.
+          # - { runner-os: macos-14, os: macos, architecture: aarch64 } # Containers are not required.
+          # - { runner-os: macos-14, os: ios, architecture: aarch64 } # Containers are not required.
+          # - { runner-os: windows-2022, os: windows, architecture: x64 } # Containers are not required.
+          # - { runner-os: windows-2022, os: windows, architecture: x86 } # Containers are not required.
+
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Add Version Suffix
+        uses: ./.github/actions/setup-version
+
+      - name: Install Dependencies
+        run: |
+          sudo -H apt-get update -y
+          sudo -H apt-get install -y libdbus-1-dev
+        env:
+          DEBIAN_FRONTEND: noninteractive
+
+      - name: Setup cmake
+        uses: ./.github/actions/setup-cmake
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Compile SimpleBLE
+        run: cargo build
+
+  # publish:
+  #   runs-on: ubuntu-22.04
+
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       env:
+  #         TAG: ${{ inputs.tag || github.ref }}
+  #       with:
+  #         ref: ${{ env.TAG }}
+
+  #     - uses: dtolnay/rust-toolchain@stable
+
+  #     - name: cargo-release Cache
+  #       id: cargo_release_cache
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: ~/.cargo/bin/cargo-release
+  #         key: cargo-release
+
+  #     - run: cargo install cargo-release
+  #       if: steps.cargo_release_cache.outputs.cache-hit != 'true'
+
+  #     - name: cargo release publish
+  #       run: |
+  #         cargo login ${{ secrets.CRATES_IO_API_TOKEN }}
+  #         cargo release \
+  #           publish \
+  #           --workspace \
+  #           --all-features \
+  #           --allow-branch HEAD \
+  #           --no-confirm \
+  #           --no-verify \
+  #           --execute
+  #       env:
+  #         HAS_CRATES_IO_API_TOKEN: ${{ secrets.CRATES_IO_API_TOKEN != '' }}
+  #       if: ${{ env.HAS_CRATES_IO_API_TOKEN == 'true' }}

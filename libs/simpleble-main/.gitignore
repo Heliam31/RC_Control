@@ -1,0 +1,17 @@
+.vscode
+*.binlog
+.DS_Store
+_build
+_doxygen
+_skbuild
+.gradle
+
+/build_*
+/install_*
+/dist
+
+__pycache__
+*.egg-info
+wheelhouse
+
+target

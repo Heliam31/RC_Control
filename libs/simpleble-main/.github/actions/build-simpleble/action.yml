@@ -1,0 +1,79 @@
+name: 'Build SimpleBLE'
+description: 'Builds SimpleBLE for a given platform, architecture, and library type'
+
+inputs:
+  os:
+    description: 'Operating System (e.g., Linux, macOS, Windows)'
+    required: true
+  arch:
+    description: 'Target architecture (e.g., x86_64, arm64, x64)'
+    required: true
+  type:
+    description: 'Library type (static or shared)'
+    required: true
+    default: 'static'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Configure CMake
+      shell: bash
+      run: |
+        BUILD_SHARED_LIBS=${{ inputs.type == 'shared' && 'ON' || 'OFF' }}
+        OUTPUT_DIR="${{ github.workspace }}/artifacts"
+        mkdir -p "$OUTPUT_DIR"
+
+        # Base CMake arguments
+        CMAKE_ARGS=(
+          "-B" "$GITHUB_WORKSPACE/build"
+          "-DCMAKE_BUILD_TYPE=Release"
+          "-S" "simpleble"
+          "-DBUILD_SHARED_LIBS=$BUILD_SHARED_LIBS"
+        )
+
+        # Platform-specific adjustments
+        if [ "${{ inputs.os }}" == "Linux" ]; then
+          CMAKE_ARGS+=("-DCMAKE_PREFIX_PATH=/tmp/dbus/install:/tmp/expat/install")
+        elif [ "${{ inputs.os }}" == "macOS" ]; then
+          CMAKE_ARGS+=("-DCMAKE_OSX_ARCHITECTURES=${{ inputs.arch }}")
+          CMAKE_ARGS+=("-DCMAKE_OSX_DEPLOYMENT_TARGET=11")
+        elif [ "${{ inputs.os }}" == "Windows" ]; then
+          CMAKE_ARGS+=("-G" "Visual Studio 17 2022")
+          CMAKE_ARGS+=("-A" "${{ inputs.arch }}")
+          CMAKE_ARGS+=("-DCMAKE_SYSTEM_VERSION=10.0.19041.0")
+        fi
+
+        cmake "${CMAKE_ARGS[@]}"
+
+    - name: Build SimpleBLE
+      shell: ${{ inputs.os == 'Windows' && 'cmd' || 'bash' }}
+      run: |
+        cmake --build %GITHUB_WORKSPACE%\build --config Release --parallel 4
+        cmake --install %GITHUB_WORKSPACE%\build --prefix %GITHUB_WORKSPACE%\build\install
+      if: inputs.os == 'Windows'
+
+    - name: Build SimpleBLE (Unix-like)
+      shell: bash
+      run: |
+        cmake --build $GITHUB_WORKSPACE/build --config Release --parallel 4
+        cmake --install $GITHUB_WORKSPACE/build --prefix $GITHUB_WORKSPACE/build/install
+      if: inputs.os != 'Windows'
+
+    - name: Package Artifacts
+      shell: bash
+      run: |
+        mkdir -p "${{ github.workspace }}/artifacts"
+        cd $GITHUB_WORKSPACE/build/install
+        zip -r "${{ github.workspace }}/artifacts/simpleble_${{ inputs.type }}_${{ inputs.os }}-${{ inputs.arch }}.zip" .
+      if: inputs.os != 'Windows'
+
+    - name: Package Artifacts (Windows)
+      shell: cmd
+      run: |
+        mkdir "%GITHUB_WORKSPACE%\artifacts"
+        cd %GITHUB_WORKSPACE%\build\install
+        7z a -tzip "%GITHUB_WORKSPACE%\artifacts\simpleble_${{ inputs.type }}_${{ inputs.os }}-${{ inputs.arch }}.zip" .
+      if: inputs.os == 'Windows'

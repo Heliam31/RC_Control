@@ -1,0 +1,60 @@
+name: 'Build DBus'
+description: 'Clone and build DBus'
+
+inputs:
+  os:
+    description: "Runner OS"
+    type: string
+    default: ''
+    required: false
+
+  arch:
+    description: "Platform architecture"
+    type: string
+    default: ''
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install Dependencies
+      shell: bash
+      env:
+          DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo -H apt-get update -y
+        sudo -H apt-get install -y jq curl
+
+    - name: Build Expat
+      uses: ./.github/actions/build-expat
+      with:
+        os: ${{ inputs.os }}
+        arch: ${{ inputs.arch }}
+
+    - name: Get latest DBus commit hash
+      id: dbus-hash
+      shell: bash
+      # NOTE: Pinning DBus to 1.16.2 as the exact version is not important.
+      run: |
+        DBUS_HASH=958bf9db2100553bcd2fe2a854e1ebb42e886054
+        echo "value=$DBUS_HASH" >> $GITHUB_OUTPUT
+
+    - name: Cache DBus
+      id: cache-dbus
+      uses: actions/cache@v4
+      with:
+        path: /tmp/install/dbus
+        key: ${{ inputs.os }}-${{ inputs.arch }}-dbus-${{ steps.dbus-hash.outputs.value }}
+
+    - name: Build DBus
+      if: steps.cache-dbus.outputs.cache-hit != 'true'
+      shell: bash
+      # NOTE: The build step requires us to extend the CMAKE_FIND_ROOT_PATH to include the expat install path,
+      #       as cross-compilation environments will ignore CMAKE_PREFIX_PATH.
+      run: |
+        git clone https://gitlab.freedesktop.org/dbus/dbus.git /tmp/dbus
+        cd /tmp/dbus
+        git checkout ${{ steps.dbus-hash.outputs.value }}
+        cmake -B build -DDBUS_SESSION_SOCKET_DIR=/usr/local/var/run/dbus/system_bus_socket -DDBUS_BUILD_TESTS=OFF -DCMAKE_FIND_ROOT_PATH='/tmp/install/expat;${CMAKE_FIND_ROOT_PATH}'
+        cmake --build build --config Release --parallel 4
+        cmake --install build --prefix /tmp/install/dbus

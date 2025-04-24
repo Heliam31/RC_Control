@@ -20,3 +20,5 @@ add_executable(RC_Control src/main.c src/throttleinput.c)
 target_include_directories(RC_Control PRIVATE includes)
 
 
+add_subdirectory(libs/simpleble-main/simplecble)
+target_link_libraries(RC_Control simpleble::simpleble)

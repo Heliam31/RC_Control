@@ -1,0 +1,136 @@
+name: CI Main
+
+on:
+  push:
+  pull_request:
+  release:
+    types: [published]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  # This job is used to detect duplicate runs and skip one of them
+  # (For example when pushing a commit to an open pull request)
+  # See: https://github.com/fkirc/skip-duplicate-actions?tab=readme-ov-file#skip-concurrent-workflow-runs
+  pre_job:
+    runs-on: ubuntu-22.04
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - name: Print event details
+        run: |
+          echo "This run was triggered by $GITHUB_EVENT_NAME event."
+          cat $GITHUB_EVENT_PATH | jq .
+      - name: Detect duplicate runs
+        id: skip_check
+        uses: fkirc/skip-duplicate-actions@v5.3.1
+        with:
+          concurrent_skipping: "same_content_newer"
+          skip_after_successful_duplicate: "true"
+      - name: Clone Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+      - name: Perform version check
+        run: |
+          ./scripts/check_version.sh
+
+  # This job is used to dynamically generate the build matrix of 'build' job in 'ci_linux_internals.yml'.
+  # The output variable 'values' is a list of strings: 'simpledbus', 'simplebluez'.
+  # This is not inside pre-job because 'changes' variable is set by dorny/paths-filter to ALL the filters
+  # that match, so we need to have a job with only these three filters.
+  # Note that the filters are defined in a way that makes each of them depend on the previous one.
+  # If in main branch, all libraries are listed in the output even if there are no matching changes.
+  libraries:
+    needs: pre_job
+    if: needs.pre_job.outputs.should_skip != 'true'
+    runs-on: ubuntu-22.04
+    permissions:
+      pull-requests: read
+    outputs:
+      values: ${{ github.ref == 'refs/heads/main' && '["simpledbus","simplebluez"]' || steps.filter.outputs.changes }}
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v4
+      - name: Detect file changes
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            simpledbus: &simpledbus
+              - 'simpledbus/**'
+            simplebluez: &simplebluez
+              - *simpledbus
+              - 'simplebluez/**'
+
+  lint:
+    needs: [pre_job]
+    if: needs.pre_job.outputs.should_skip != 'true'
+    uses: ./.github/workflows/ci_lint.yml
+
+  docs:
+    needs: [pre_job]
+    if: needs.pre_job.outputs.should_skip != 'true'
+    uses: ./.github/workflows/ci_docs.yml
+
+  smoketest:
+    needs: [pre_job]
+    if: needs.pre_job.outputs.should_skip != 'true'
+    uses: ./.github/workflows/ci_smoketest.yml
+
+  simpleble:
+    needs: [smoketest]
+    uses: ./.github/workflows/ci_simpleble.yml
+
+  simplepyble:
+    needs: [smoketest]
+    uses: ./.github/workflows/ci_simplepyble.yml
+
+  simplejavable:
+    needs: [smoketest]
+    uses: ./.github/workflows/ci_simplejavable.yml
+
+  simpledroidble:
+    needs: [smoketest]
+    uses: ./.github/workflows/ci_simpledroidble.yml
+
+  simplecble:
+    needs: [smoketest]
+    uses: ./.github/workflows/ci_simplecble.yml
+
+  simplersble:
+    needs: [smoketest]
+    uses: ./.github/workflows/ci_simplersble.yml
+
+  linux-internals:
+    needs: [smoketest, libraries]
+    uses: ./.github/workflows/ci_linux_internals.yml
+    with:
+      libraries: ${{ needs.libraries.outputs.values }}
+
+  release:
+    needs: [simpleble, simplepyble, simplejavable, simpledroidble, simplecble, simplersble]
+    runs-on: ubuntu-22.04
+    steps:
+
+      - name: "Download all artifacts"
+        uses: actions/download-artifact@v4
+        with:
+          pattern: "*"
+          path: artifacts
+          merge-multiple: true
+
+      - name: List all artifacts
+        run: find artifacts -type f -ls | sort
+
+      - name: Upload artifacts to release
+        uses: svenstaro/upload-release-action@v2
+        if: github.event_name == 'release'
+        with:
+          file: artifacts/**/*
+          tag: ${{ github.ref }}
+          overwrite: true
+          file_glob: true
