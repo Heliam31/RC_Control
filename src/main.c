@@ -1,14 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
+
 #include <pthread.h>
 #include <unistd.h>
 #include "throttleinput.h"
 
-// ESP32 mac addr = 1c:69:20:a4:c6:1c
+#include "simpleble_c/simpleble.h"
+// ESP32 mac addr = 1c:69:20:a4:c6:1e
 
 
 int main() {
     pthread_t thread;
     pthread_create(&thread, NULL, hotas_inputs, NULL);
+
+    pthread_t threadBLE;
+    pthread_create(&threadBLE, NULL, ble_sender, NULL);
+
     int current = throttle_position;
     while (running) {
         pthread_mutex_lock(&throttle_mutex);

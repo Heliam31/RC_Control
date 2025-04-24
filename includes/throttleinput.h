@@ -9,5 +9,6 @@ extern pthread_mutex_t throttle_mutex;
 
 
 void* hotas_inputs(void* arg);
+void* ble_sender(void* arg);
 
 #endif

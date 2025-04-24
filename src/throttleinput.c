@@ -44,7 +44,8 @@ void* hotas_inputs(void* arg) {
                 printf("Axis %u = %d\n", e.number, e.value);
             }
         } else if (e.type == JS_EVENT_BUTTON) {
-            if (e.number == 0){
+            if (e.number == 0 && e.value == 1){
+                printf("Button %u = %s\n", e.number, e.value ? "pressed" : "released");
                 printf("Bye Bye");
                 running = 0;
             }
