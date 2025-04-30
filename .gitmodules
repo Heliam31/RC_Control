@@ -1,0 +1,3 @@
+[submodule "libs/bluezC"]
+	path = libs/bluezC
+	url = git@github.com:weliem/bluez_inc.git

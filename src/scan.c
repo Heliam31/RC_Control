@@ -41,6 +41,9 @@ static int charac_nb = -1;
 //                                                                                                                   //
 //-------------------------------------------------------------------------------------------------------------------//
 void* ble_sender(void* arg) {
+
+    // SETUP -----------------------------------------------------------------------------//
+    
     simpleble_err_t err_code = SIMPLEBLE_SUCCESS;
     atexit(clean_on_exit);
 
@@ -175,6 +178,9 @@ void* ble_sender(void* arg) {
             }
         }
     }
+
+
+    // LOOP -----------------------------------------------------------------------------//
 
     int current = throttle_position;
     while(running){

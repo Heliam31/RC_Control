@@ -14,6 +14,9 @@ int convert_to_percent(int raw) {
 }
 
 void* hotas_inputs(void* arg) {
+
+    // SETUP ------------------------------------------------------------------// 
+
     const char *device = "/dev/input/js0";
     int js = open(device, O_RDONLY);
     if (js < 0) {
@@ -24,13 +27,17 @@ void* hotas_inputs(void* arg) {
     struct js_event e;
 
     printf("Reading joystick inputs (press Ctrl+C to quit):\n");
+
+    // LOOP ------------------------------------------------------------------// 
+
     while (running) {
+        //READ
         if (read(js, &e, sizeof(e)) != sizeof(e)) {
             perror("Read error");
             break;
         }
 
-
+        //ACTION ACCORDING TO THE BUTTON/AXIS 
         if (e.type == JS_EVENT_AXIS) {
             if(e.number == 2){
                 int percent = convert_to_percent(e.value);
